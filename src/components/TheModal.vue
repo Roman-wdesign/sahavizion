@@ -13,12 +13,6 @@ interface Folder {
   children: Folder[]
 }
 
-// event for Ok button
-const openModal = ref(true)
-const closeModal = () => {
-  openModal.value = false
-}
-
 //close Button emit - no events more
 const props = defineProps<Props>()
 const emit = defineEmits(['close'])
@@ -26,7 +20,7 @@ const emit = defineEmits(['close'])
 const expandedFolders = ref(new Set())
 const selectedFolderId = ref(null)
 
-const mockFolders = [
+const mockFolders: Folder[] = [
   {
     id: 1,
     name: 'Папка 1',
@@ -57,7 +51,7 @@ const selectFolder = (id) => {
 //for Ok button
 const confirmSelection = () => {
   console.log('Выбрана папка с ID:', selectedFolderId.value)
-  closeModal()
+  emit('close')
 }
 </script>
 
@@ -66,13 +60,7 @@ const confirmSelection = () => {
     <!-- Close button -->
     <TheButton class="btn btn-close" @click="emit('close')">
       <template #button-slot>
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L17 17M17 1L1 17" stroke="white" stroke-width="4" stroke-linecap="round" />
         </svg>
       </template>
@@ -87,22 +75,31 @@ const confirmSelection = () => {
         <span class="list__item-sign" @click="toggleFolder(folder.id)">
           {{ expandedFolders.has(folder.id) ? '-' : '+' }}
         </span>
-        <span
-          @click="selectFolder(folder.id)"
-          :class="{ 'strong-style': selectedFolderId === folder.id }"
-        >
-          {{ folder.name }}</span
-        >
+        <span @click="selectFolder(folder.id)" :class="{ 'strong-style': selectedFolderId === folder.id }">
+          {{ folder.name }}</span>
 
-        <!-- Render child folders -->
-        <ul v-if="expandedFolders.has(folder.id)">
-          <li
-            v-for="child in folder.children"
-            :key="child.id"
-            @click="selectFolder(child.id)"
-            :class="{ 'strong-style': selectedFolderId === folder.id }"
-          >
-            {{ child.name }}
+        <!-- Recursion Render child folders -->
+        <ul v-if="expandedFolders.has(folder.id)" class="list__sub">
+          <li v-for="child in folder.children" :key="child.id" class="list__item">
+            <span class="list__item-sign" @click="toggleFolder(child.id)">
+              {{ expandedFolders.has(child.id) ? '-' : '+' }}
+            </span>
+            <span :class="{ 'strong-style': selectedFolderId === child.id }" @click="selectFolder(child.id)">
+              {{ child.name }}
+            </span>
+
+            <!-- Recursion Render elements -->
+            <ul v-if="expandedFolders.has(child.id)" class="list__sub">
+              <li v-for="grandchild in child.children" :key="grandchild.id" class="list__item">
+                <span class="list__item-sign" @click="toggleFolder(grandchild.id)">
+                  {{ expandedFolders.has(grandchild.id) ? '-' : '+' }}
+                </span>
+                <span :class="{ 'strong-style': selectedFolderId === grandchild.id }"
+                  @click="selectFolder(grandchild.id)">
+                  {{ grandchild.name }}
+                </span>
+              </li>
+            </ul>
           </li>
         </ul>
       </li>

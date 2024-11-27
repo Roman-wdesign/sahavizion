@@ -1,4 +1,4 @@
-@import 'normalize.css';
+@import "normalize.css";
 
 *,
 *:before,
@@ -87,6 +87,7 @@ html {
     font-size: 1.8rem;
 
     &-sign {
+      margin-right: 1rem;
       cursor: pointer;
     }
   }
