@@ -10,7 +10,6 @@ const openModal = ref(false)
 <template>
   <div>
     <section class="section-one">
-      <div class="div-block"></div>
       <TheModal :title="'Модальное окно'" :isOpen="openModal" @close="openModal = false"></TheModal>
       <TheButton class="btn main-btn" @click="openModal = true">
         <template #button-slot>открыть</template>
