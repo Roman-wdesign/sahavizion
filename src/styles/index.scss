@@ -1,4 +1,4 @@
-@import "normalize.css";
+@import 'normalize.css';
 
 *,
 *:before,
@@ -28,6 +28,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
 
   padding: 4rem 3rem;
@@ -61,6 +62,11 @@ html {
     background-color: #e9918c;
     color: #ffffff;
   }
+
+  &-ok {
+    max-width: 40rem;
+    width: 100%;
+  }
 }
 
 .btn-close {
@@ -84,4 +90,8 @@ html {
       cursor: pointer;
     }
   }
+}
+
+.strong-style {
+  font-weight: bold;
 }
