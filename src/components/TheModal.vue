@@ -17,8 +17,8 @@ interface Folder {
 const props = defineProps<Props>()
 const emit = defineEmits(['close'])
 
-const expandedFolders = ref(new Set())
-const selectedFolderId = ref(null)
+const expandedFolders = ref<Set<number>>(new Set())
+const selectedFolderId = ref<number | null>(null)
 
 const mockFolders: Folder[] = [
   {
@@ -36,7 +36,7 @@ const mockFolders: Folder[] = [
   { id: 5, name: 'Папка 2', children: [] },
 ]
 
-const toggleFolder = (id) => {
+const toggleFolder = (id: number): void => {
   if (expandedFolders.value.has(id)) {
     expandedFolders.value.delete(id)
   } else {
@@ -44,12 +44,12 @@ const toggleFolder = (id) => {
   }
 }
 
-const selectFolder = (id) => {
+const selectFolder = (id: number): void => {
   selectedFolderId.value = id
 }
 
 //for Ok button
-const confirmSelection = () => {
+const confirmSelection = (): void => {
   console.log('Выбрана папка с ID:', selectedFolderId.value)
   emit('close')
 }
