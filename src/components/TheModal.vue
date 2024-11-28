@@ -60,7 +60,13 @@ const confirmSelection = (): void => {
     <!-- Close button -->
     <TheButton class="btn btn-close" @click="emit('close')">
       <template #button-slot>
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path d="M1 1L17 17M17 1L1 17" stroke="white" stroke-width="4" stroke-linecap="round" />
         </svg>
       </template>
@@ -75,8 +81,12 @@ const confirmSelection = (): void => {
         <span class="list__item-sign" @click="toggleFolder(folder.id)">
           {{ expandedFolders.has(folder.id) ? '-' : '+' }}
         </span>
-        <span @click="selectFolder(folder.id)" :class="{ 'strong-style': selectedFolderId === folder.id }">
-          {{ folder.name }}</span>
+        <span
+          @click="selectFolder(folder.id)"
+          :class="{ 'strong-style': selectedFolderId === folder.id }"
+        >
+          {{ folder.name }}</span
+        >
 
         <!-- Recursion Render child folders -->
         <ul v-if="expandedFolders.has(folder.id)" class="list__sub">
@@ -84,7 +94,10 @@ const confirmSelection = (): void => {
             <span class="list__item-sign" @click="toggleFolder(child.id)">
               {{ expandedFolders.has(child.id) ? '-' : '+' }}
             </span>
-            <span :class="{ 'strong-style': selectedFolderId === child.id }" @click="selectFolder(child.id)">
+            <span
+              :class="{ 'strong-style': selectedFolderId === child.id }"
+              @click="selectFolder(child.id)"
+            >
               {{ child.name }}
             </span>
 
@@ -94,8 +107,10 @@ const confirmSelection = (): void => {
                 <span class="list__item-sign" @click="toggleFolder(grandchild.id)">
                   {{ expandedFolders.has(grandchild.id) ? '-' : '+' }}
                 </span>
-                <span :class="{ 'strong-style': selectedFolderId === grandchild.id }"
-                  @click="selectFolder(grandchild.id)">
+                <span
+                  :class="{ 'strong-style': selectedFolderId === grandchild.id }"
+                  @click="selectFolder(grandchild.id)"
+                >
                   {{ grandchild.name }}
                 </span>
               </li>
@@ -104,7 +119,9 @@ const confirmSelection = (): void => {
         </ul>
       </li>
     </ul>
-    <button class="btn btn-ok" @click="confirmSelection">Ok</button>
+    <TheButton class="btn btn-ok" @click="confirmSelection">
+      <template #button-slot>Ok</template>
+    </TheButton>
   </div>
 </template>
 
