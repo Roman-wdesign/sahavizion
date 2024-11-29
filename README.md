@@ -1,3 +1,7 @@
+## About
+
+#### how use emit with ts + vue3 + composition api script setup
+
 ## Project Setup
 
 ```sh
