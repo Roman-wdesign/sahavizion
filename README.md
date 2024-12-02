@@ -9,9 +9,9 @@
 ├──📁 assets/ # assets directory  
 │  
 ├──📁 components/ # components directory  
-│ ├──📄 TheButton.vue/ # child component # $\textcolor{#e9918c}{\textsf{emit}}$ event <span style="color:#7375dd"> click</span> to TheModal.vue  
-│ ├────📄 TheModal.vue/ # **child** of TheWelcome.vue, but **parent** of TheButton # <span style="color:#e9918c"> emit</span> </span> event <span style="color:#7375dd"> update:isOpen</span> to TheWelcome.vue and watch <span style="color:#e9918c"> props<span style="color:#7375dd"> isOpen</span> </span> and synchronizes local <span style="color:#7375dd"> oModal</span>  
-│ └───────📄 TheWelcome.vue/ # parent component # use <span style="color:#e9918c"> reactive</span> <span style="color:#7375dd"> openModal</span>. Use <span style="color:#7375dd"> isOpen </span> as <span style="color:#e9918c"> props</span> to TheModal.vue. Use <span style="color:#7375dd"> update:isOpen</span> to synchronize with TheModal.vue
+│ ├──📄 TheButton.vue/ # child component # $\textcolor{#e9918c}{\textsf{emit}}$ event $\textcolor{#7375dd}{\textsf{click}}$ to TheModal.vue  
+│ ├────📄 TheModal.vue/ # **child** of TheWelcome.vue, but **parent** of TheButton # $\textcolor{#e9918c}{\textsf{emit}}$ event $\textcolor{#7375dd}{\textsf{update:isOpen}}$ to TheWelcome.vue and watch $\textcolor{#e9918c}{\textsf{props}}$ $\textcolor{#7375dd}{\textsf{isOpen}}$ and synchronizes local $\textcolor{#7375dd}{\textsf{oModal}}$  
+│ └───────📄 TheWelcome.vue/ # parent component # use $\textcolor{#e9918c}{\textsf{reactive}}$ $\textcolor{#7375dd}{\textsf{openModal}}$. Use $\textcolor{#7375dd}{\textsf{isOpen}}$ as $\textcolor{#e9918c}{\textsf{props}}$ to TheModal.vue. Use $\textcolor{#7375dd}{\textsf{update:isOpen}}$ to synchronize with TheModal.vue
 
 │  
 |   
